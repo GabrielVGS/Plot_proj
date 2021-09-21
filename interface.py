@@ -50,16 +50,24 @@ def entrada_2d(window):
             in_x = input_mouse.getX()
             in_y = input_mouse.getY()
             if in_x >= 500 and in_x <= 530 and in_y >= 485 and in_y <= 510:
-                expr = input_box.getText()
-                plot_2dim(to_expression(expr))
-                img = Image(Point(400,240),"function2d.png")
-                img.draw(window)
+                try:
+                    expr = input_box.getText()
+                    plot_2dim(to_expression(expr))
+                    img = Image(Point(400,240),"function2d.png")
+                    img.draw(window)
+                except:
+                    err = Text(Point(400,240),"Função não valida")
+                    err.draw(window)
             elif in_x >= 460 and in_x <= 530 and in_y >= 520 and in_y <= 530:
-                expr = input_box.getText()
-                derivada(to_expression(expr))
-                dx_graph = Image(Point(400,240),"deriv.png")
-                dx_graph.draw(window)
-
+                try:
+                    expr = input_box.getText()
+                    derivada(to_expression(expr))
+                    dx_graph = Image(Point(400,240),"deriv.png")
+                    dx_graph.draw(window)
+                except:
+                    err = Text(Point(400,240),"Função não valida")
+                    err.draw(window)
+                    
             if in_x >= 700 and in_x <= 795 and in_y >= 580 and in_y <= 595:
                 clear(window)
                 home(window)

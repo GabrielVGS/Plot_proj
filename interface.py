@@ -9,5 +9,6 @@ def main():
     img.draw(win)
     win.getMouse() # Pause to view result
     win.close()    # Close window when done
-
-main()
+    
+if __name__ == "__main__":
+    main()

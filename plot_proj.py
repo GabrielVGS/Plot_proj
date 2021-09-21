@@ -37,4 +37,3 @@ def derivada(express):
         func.save("deriv.png")
     except:
         return "Expressão inválida"
-

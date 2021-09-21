@@ -65,9 +65,9 @@ def entrada_2d(window):
                     dx_graph = Image(Point(400,240),"deriv.png")
                     dx_graph.draw(window)
                 except:
-                    err = Text(Point(400,240),"Função não valida")
-                    err.draw(window)
-                    
+                    err2 = Text(Point(400,240),"Função não valida")
+                    err2.draw(window)
+
             if in_x >= 700 and in_x <= 795 and in_y >= 580 and in_y <= 595:
                 clear(window)
                 home(window)
@@ -75,10 +75,36 @@ def entrada_2d(window):
     
 def entrada_3d(window):
     clear(window)
-    input_box = Entry(Point(400,300),20)
+    input_box = Entry(Point(400,500),20)
     input_box.draw(window)
-    txt = Text(Point(600,300),"texto teste")
-    txt.draw(window)
+    go = Rectangle(Point(500,485),Point(530,510))
+    go.draw(window)
+    txt_go = Text(go.getCenter(),'Go')
+    txt_go.draw(window)
+    home_bt = Rectangle(Point(700,580),Point(795,595))
+    home_bt.draw(window)
+    txt_home = Text(home_bt.getCenter(),"Tela inicial")
+    txt_home.draw(window)
+    while True:
+        input_mouse = window.checkMouse()
+        if input_mouse is not None:
+            in_x = input_mouse.getX()
+            in_y = input_mouse.getY()
+            if in_x >= 500 and in_x <= 530 and in_y >= 485 and in_y <= 510:
+                try:
+                    expr = input_box.getText()
+                    plot_3dim(to_expression(expr))
+                    img = Image(Point(400,240),"function3d.png")
+                    img.draw(window)
+                except:
+                    err = Text(Point(400,240),"Função não valida")
+                    err.draw(window)
+            
+            if in_x >= 700 and in_x <= 795 and in_y >= 580 and in_y <= 595:
+                clear(window)
+                home(window)
+                begin(window)
+
 
 def begin(window):
     while True:
@@ -92,8 +118,8 @@ def begin(window):
             elif x >= 500 and x <= 700 and y >= 200 and y <= 300:
                 entrada_3d(window)
             update(15)
-    win.getMouse() # Pause to view result
-    win.close()    # Close window when done
+    window.getMouse() # Pause to view result
+    window.close()    # Close window when done
 
 def main():
     win = GraphWin("Input Plot", 800, 600,autoflush = False)

@@ -72,6 +72,7 @@ def entrada_2d(window):
                 clear(window)
                 home(window)
                 begin(window)
+            
     
 def entrada_3d(window):
     clear(window)

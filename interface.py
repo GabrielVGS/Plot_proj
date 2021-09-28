@@ -2,8 +2,7 @@ from graphics import *
 from plot_proj import *
 #Aluno : Gabriel Viana da Silva
 #Matrícula: 149350
-#Data : 21/09/2021
-##### Interface ainda em desenvolvimento ####
+#Data : 28/09/2021
 def ajuda(window):
     clear(window)
     home_bt = Rectangle(Point(700,580),Point(795,595))
@@ -95,13 +94,8 @@ def entrada_2d(window):
                     home(window)
                     begin(window)
         except:
-            img.undraw()
-            dx_graph.undraw()
-            err = Text(Point(400,240),"Função não valida")
-            err.draw(window)
-
-            
-    
+            pass
+  
 def entrada_3d(window):
     clear(window)
     input_box = Entry(Point(400,500),20)
@@ -115,25 +109,26 @@ def entrada_3d(window):
     txt_home = Text(home_bt.getCenter(),"Tela inicial")
     txt_home.draw(window)
     while True:
-        input_mouse = window.checkMouse()
-        if input_mouse is not None:
-            in_x = input_mouse.getX()
-            in_y = input_mouse.getY()
-            if in_x >= 500 and in_x <= 530 and in_y >= 485 and in_y <= 510:
-                try:
-                    expr = input_box.getText()
-                    plot_3dim(to_expression(expr))
-                    img = Image(Point(400,240),"function3d.png")
-                    img.draw(window)
-                except:
-                    err = Text(Point(400,240),"Função não valida")
-                    err.draw(window)
-            
-            if in_x >= 700 and in_x <= 795 and in_y >= 580 and in_y <= 595:
-                clear(window)
-                home(window)
-                begin(window)
-
+        try:
+            input_mouse = window.checkMouse()
+            if input_mouse is not None:
+                in_x = input_mouse.getX()
+                in_y = input_mouse.getY()
+                if in_x >= 500 and in_x <= 530 and in_y >= 485 and in_y <= 510:
+                    try:
+                        expr = input_box.getText()
+                        plot_3dim(to_expression(expr))
+                        img = Image(Point(400,240),"function3d.png")
+                        img.draw(window)
+                    except:
+                        pass
+                
+                if in_x >= 700 and in_x <= 795 and in_y >= 580 and in_y <= 595:
+                    clear(window)
+                    home(window)
+                    begin(window)
+        except:
+            pass
 
 def begin(window):
     while True:
@@ -152,9 +147,6 @@ def begin(window):
 
 def main():
     win = GraphWin("Input Plot", 800, 600,autoflush = False)
-    #img = Image(Point(50,50),'function2d.png')
-    #img.draw(win)
-    #entrada_2d(win)
     home(win)
     begin(win)
     
